@@ -8,7 +8,7 @@ To view my submission: https://main.d1tlgag3vgp7ls.amplifyapp.com/ (web applicat
 Provided an opportunity for me to explore and familiarize myself with AWS technologies and have fun making a game.
 
 ## Intended Purpose Of The Game
-Shape-Cast is an interactive browser-based game where players strategically select and place different shapes on a blank canvas to achieve the target score within a time limit.\
+Shape-Cast is an interactive browser-based game where players strategically select and place different shapes on a blank canvas to achieve the target score within a time limit.
 The game combines quick thinking with score optimization and seeks to challenge players to use various shapes (each with different points) to reach the goal.
 
 ## Technical Implementation
