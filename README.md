@@ -13,8 +13,8 @@ This project was developed using:
 - HTML5 Canvas for game rendering
 - Vanilla JavaScript for game logic
 - CSS for styling and responsive design
-- Amazon Q
-- 
+- Amazon Q Developer
+
 ## Purpose For The Developer
 Provided an opportunity for me to explore and familiarize myself with AWS technologies (described below).
 Namely, I used Amazon Q Developer to speed up/optimize game development and AWS Amplify to host it as a web application.
@@ -23,7 +23,7 @@ Namely, I used Amazon Q Developer to speed up/optimize game development and AWS 
 Amazon Q Developer was instrumental in the development process:
 - Code Generation: Used to generate the initial HTML structure and game canvas setup
 - Best Practices: Provided guidance on game implementation and structure
-- Abidance of Good SWE Principles: Ensured that poor code practices were avoided (i.e. arrowhead, nested loops, poor code commit language)
+- Abidance of Good SWE Principles: Ensured that poor code practices were avoided as much as possible (i.e. arrowhead, nested loops, poor code commit language)
 - Code Review: Helped identify and fix potential issues in the implementation
 
 ## Features
