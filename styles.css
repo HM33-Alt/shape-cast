@@ -59,7 +59,6 @@ button {
     transition: all 0.3s;
 }
 
-/* Start button specific style */
 #startBtn {
     background-color: #4CAF50;
 }
@@ -102,8 +101,10 @@ button {
     background-color: #732d91;
 }
 
+/* Added clear space button */
+
 #clearBtn {
-    background-color: #95a5a6;  /* Gray color */
+    background-color: #95a5a6;
 }
 
 #clearBtn:hover {
@@ -123,6 +124,8 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+/* Added sidebar for in-game guide */
 
 .side-guide {
     position: fixed;
@@ -209,11 +212,13 @@ button:disabled {
     margin-left: 30px; /* Space for the toggle button */
 }
 
-/* Make sure canvas doesn't overlap with guide */
+/* Ensure that canvas does not overlap with guide */
 #gameCanvas {
     position: relative;
     z-index: 1;
 }
+
+/* Insert game title above canvas */
 
 .game-title {
     text-align: center;

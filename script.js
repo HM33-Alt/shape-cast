@@ -1,4 +1,4 @@
-// Constants
+// Constants (Shapes)
 const SHAPES = {
     CIRCLE: 'circle',
     SQUARE: 'square',
@@ -6,6 +6,7 @@ const SHAPES = {
     DIAMOND: 'diamond'
 };
 
+// Shapes points allocation
 const GAME_CONFIG = {
     SHAPE_POINTS: {
         [SHAPES.CIRCLE]: 5,
@@ -13,6 +14,8 @@ const GAME_CONFIG = {
         [SHAPES.TRIANGLE]: 15,
         [SHAPES.DIAMOND]: -1
     },
+
+    // Setting time limits and possible target scores
     TIME_LIMIT: 40,
     MIN_TARGET_SCORE: 50,
     MAX_TARGET_SCORE: 200,
@@ -23,6 +26,12 @@ const GAME_CONFIG = {
 // Canvas setup
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+// Error handling for canvas
+if (!ctx) {
+    console.error('Canvas context not supported');
+    throw new Error('Canvas context not supported');
+}
 
 // Game State
 const GAME_STATE = {
@@ -69,31 +78,6 @@ const drawingFunctions = {
     }
 };
 
-// Function to handle clearing
-function clearSpace() {
-    if (!GAME_STATE.isPlaying) {
-        showMessage("Start the game first!");
-        return;
-    }
-
-    // Clear all drawn shapes from the canvas
-    drawnShapes = [];
-
-    // Reset the current score to 0
-    GAME_STATE.currentScore = 0;
-
-    // Clear the canvas but keep the target score and time left intact
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Update UI
-    updateUI();
-
-    // Show a message
-    showMessage("Canvas cleared and score reset! You can continue playing.");
-}
-
-document.getElementById("clearBtn").addEventListener("click", clearSpace);
-
 // Game functions
 function startGame() {
     // Reset the game state
@@ -122,14 +106,13 @@ function startGame() {
     showMessage("Game started! Reach the target score!");
 }
 
-
 function generateTargetScore() {
     return Math.floor(Math.random() *
             (GAME_CONFIG.MAX_TARGET_SCORE - GAME_CONFIG.MIN_TARGET_SCORE + 1)) +
         GAME_CONFIG.MIN_TARGET_SCORE;
 }
 
-// Update startTimer function to store timer reference
+// Timer functions
 function startTimer() {
     // Clear any existing timer
     if (window.gameTimer) {
@@ -141,23 +124,25 @@ function startTimer() {
             GAME_STATE.timeLeft--;
             updateUI();
         } else {
-            clearInterval(window.gameTimer);  // Stop the timer
-            endGame('Time is up!');  // Explicitly call the end game function
+            clearInterval(window.gameTimer);  // Stop timer
+            endGame('Time is up!');  // Call the end game function
         }
     }, 1000);
 }
 
+// End game management
 function endGame(message) {
-    GAME_STATE.isPlaying = false;  // Explicitly stop the game
+    GAME_STATE.isPlaying = false;
     clearInterval(window.gameTimer);  // Stop the timer
 
-    // Show the "Game Over" or other messages
+    // Show message to indicate that the game is over
     showMessage(message);
 
     // Disable canvas interaction
     document.getElementById("gameCanvas").style.pointerEvents = "none";  // Disable mouse events on canvas
 }
 
+// Checking user interactions
 function handleCanvasClick(event) {
     if (!GAME_STATE.isPlaying) {  // Check if the game is still active
         showMessage("Game Over! Start a new game to play.");
@@ -212,6 +197,7 @@ function renderShapes() {
     });
 }
 
+// UI update functions
 function updateUI() {
     document.getElementById('scoreDisplay').textContent = `Score: ${GAME_STATE.currentScore}`;
     document.getElementById('targetDisplay').textContent = `Target: ${GAME_STATE.targetScore}`;
@@ -228,9 +214,32 @@ function showMessage(message) {
     }, 3000);
 }
 
+// Function to handle clearing
+function clearSpace() {
+    if (!GAME_STATE.isPlaying) {
+        showMessage("Start the game first!");
+        return;
+    }
+
+    // Clear all drawn shapes from the canvas
+    drawnShapes = [];
+
+    // Reset the current score to 0
+    GAME_STATE.currentScore = 0;
+
+    // Clear the canvas but keep the target score and time left intact
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update UI
+    updateUI();
+
+    // Show a message
+    showMessage("Canvas cleared and score reset! Play on!.");
+}
 
 // Event Listeners
 document.getElementById("startBtn").addEventListener("click", startGame);
+document.getElementById("clearBtn").addEventListener("click", clearSpace);
 
 Object.values(SHAPES).forEach(shape => {
     const button = document.getElementById(`${shape}Btn`);
@@ -265,10 +274,3 @@ document.addEventListener('keydown', function(event) {
 toggleGuideBtn.setAttribute("aria-expanded", "false");
 toggleGuideBtn.setAttribute("aria-controls", "guidePanel");
 guidePanel.setAttribute("aria-label", "Game guide");
-
-
-// Error handling for canvas context
-if (!ctx) {
-    console.error('Canvas context not supported');
-    throw new Error('Canvas context not supported');
-}
