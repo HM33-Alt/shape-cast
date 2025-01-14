@@ -62,7 +62,7 @@ Below is a screenshot of the game screen:
    Triangle: 15 points
    Diamond: -1 point
 
-3. Controls:
+3. Gameplay:
    - Press 'Start Game' to begin a new game 
    - Click any shape button to select it</li>
    - Click on the canvas to place the selected shape</li>
