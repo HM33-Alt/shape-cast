@@ -76,29 +76,20 @@ function clearSpace() {
         return;
     }
 
-    // Clear all shapes
+    // Clear all drawn shapes from the canvas
     drawnShapes = [];
 
-    // Reset score and time to initial values
+    // Reset the current score to 0
     GAME_STATE.currentScore = 0;
-    GAME_STATE.timeLeft = GAME_CONFIG.TIME_LIMIT;
-    GAME_STATE.targetScore = generateTargetScore();
 
-    // Clear canvas
+    // Clear the canvas but keep the target score and time left intact
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Update UI
     updateUI();
 
-    // Clear any existing timers
-    if (window.gameTimer) {
-        clearInterval(window.gameTimer);
-    }
-
-    // Start a fresh timer
-    startTimer();
-
-    showMessage("Space cleared! New target score generated!");
+    // Show a message
+    showMessage("Canvas cleared and score reset! You can continue playing.");
 }
 
 document.getElementById("clearBtn").addEventListener("click", clearSpace);
@@ -184,7 +175,7 @@ function handleCanvasClick(event) {
     if (GAME_STATE.currentScore === GAME_STATE.targetScore) {
         GAME_STATE.isPlaying = false;  // Stop the game
         clearInterval(window.gameTimer);  // Stop the timer
-        showMessage("You have won! Hit Start Game to play again!");  // Show win message
+        showMessage("Score Reached! Hit Start Game To Play Again!");  // Show win message
     }
 
 }

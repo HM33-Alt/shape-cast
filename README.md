@@ -24,7 +24,7 @@ Amazon Q Developer was instrumental in the development process:
 - Code Generation: Used to generate the initial HTML structure and game canvas setup
 - Best Practices: Provided guidance on game implementation and structure
 - Abidance of Good SWE Principles: Ensured that poor code practices were avoided as much as possible (i.e. arrowhead, nested loops, poor code commit language)
-- Code Review: Helped identify and fix potential issues in the implementation
+- Code Review: Utilized the inbuilt '/review' to identify and fix potential issues in the implementation
 
 ## Features
 - Real-time score tracking and countdown
