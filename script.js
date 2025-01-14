@@ -105,15 +105,26 @@ document.getElementById("clearBtn").addEventListener("click", clearSpace);
 
 // Game functions
 function startGame() {
+    // Initialize game state
+    GAME_STATE.isPlaying = true;
     GAME_STATE.currentScore = 0;
     GAME_STATE.timeLeft = GAME_CONFIG.TIME_LIMIT;
-    GAME_STATE.isPlaying = true;
     GAME_STATE.targetScore = generateTargetScore();
+
+    // Clear any existing shapes and canvas
     drawnShapes = [];
-    startTimer();
-    updateUI();
-    // Enable clear button when game starts
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Enable buttons
     document.getElementById("clearBtn").disabled = false;
+
+    // Start timer
+    startTimer();
+
+    // Update UI
+    updateUI();
+
+    showMessage("Game started! Reach the target score!");
 }
 
 function generateTargetScore() {
@@ -147,11 +158,6 @@ function handleCanvasClick(event) {
     const newShape = createShape(mouseX, mouseY);
     const pointsToAdd = GAME_CONFIG.SHAPE_POINTS[currentShapeType];
 
-    if (GAME_STATE.currentScore + pointsToAdd > GAME_STATE.targetScore) {
-        showMessage("That would exceed the target score! Choose carefully!");
-        return;
-    }
-
     // Check if adding this shape would make score negative
     if (GAME_STATE.currentScore + pointsToAdd < 0) {
         showMessage("Score cannot go below zero!");
@@ -166,15 +172,23 @@ function handleCanvasClick(event) {
         }
     }
 
+    // Add shape and update score
     drawnShapes.push(newShape);
     GAME_STATE.currentScore += pointsToAdd;
 
-    if (GAME_STATE.currentScore === GAME_STATE.targetScore) {
-        endGame('Perfect Score! You win!');
-    }
-
+    // Render the new shape
     renderShapes();
     updateUI();
+
+    // Check for win condition after rendering
+    if (GAME_STATE.currentScore === GAME_STATE.targetScore) {
+        GAME_STATE.isPlaying = false;  // Stop the game
+        if (window.gameTimer) {
+            clearInterval(window.gameTimer);
+        }
+        const timeLeft = GAME_STATE.timeLeft;
+        endGame(`Perfect Score! You won with ${timeLeft} seconds left!`);
+    }
 }
 
 function createShape(x, y) {
@@ -208,10 +222,25 @@ function showMessage(text) {
     }, 2000);
 }
 
-function endGame(message) {
-    GAME_STATE.isPlaying = false;
-    document.getElementById("clearBtn").disabled = true;
-    showMessage(message);
+function clearSpace() {
+    if (!GAME_STATE.isPlaying) {
+        showMessage("Start the game first!");
+        return;
+    }
+
+    // Clear all shapes
+    drawnShapes = [];
+
+    // Reset only the current score
+    GAME_STATE.currentScore = 0;
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update UI
+    updateUI();
+
+    showMessage("Space cleared!");
 }
 
 // Event Listeners
