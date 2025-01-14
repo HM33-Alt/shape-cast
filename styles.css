@@ -215,6 +215,20 @@ button:disabled {
     z-index: 1;
 }
 
+.game-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #message {
     position: fixed;
     top: 20px;
