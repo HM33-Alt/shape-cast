@@ -124,6 +124,97 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.side-guide {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 300px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #ddd;
+    transform: translateX(-270px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.side-guide.open {
+    transform: translateX(0);
+}
+
+.guide-content {
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.guide-inner {
+    padding-right: 15px;
+    padding-left: 30px;
+}
+
+#toggleGuideBtn {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 60px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggleGuideBtn:hover {
+    background-color: #45a049;
+}
+
+.guide-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.guide-content h3 {
+    color: #444;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.guide-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.guide-content li {
+    margin: 5px 0;
+    color: #555;
+}
+
+.guide-content p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Adjust main game container to account for guide */
+.container {
+    margin-left: 30px; /* Space for the toggle button */
+}
+
+/* Make sure canvas doesn't overlap with guide */
+#gameCanvas {
+    position: relative;
+    z-index: 1;
+}
+
 #message {
     position: fixed;
     top: 20px;

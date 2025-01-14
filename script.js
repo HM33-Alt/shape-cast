@@ -254,8 +254,32 @@ Object.values(SHAPES).forEach(shape => {
         });
     }
 });
-
 canvas.addEventListener("click", handleCanvasClick);
+
+// Get guide elements
+const guidePanel = document.getElementById("guidePanel");
+const toggleGuideBtn = document.getElementById("toggleGuideBtn");
+
+// Toggle guide visibility
+toggleGuideBtn.onclick = function() {
+    guidePanel.classList.toggle("open");
+    // Update ARIA attributes
+    const isExpanded = guidePanel.classList.contains("open");
+    toggleGuideBtn.setAttribute("aria-expanded", isExpanded);
+}
+
+// Add keyboard accessibility
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'g' || event.key === 'G') {
+        toggleGuideBtn.click();
+    }
+});
+
+// Initialize ARIA attributes
+toggleGuideBtn.setAttribute("aria-expanded", "false");
+toggleGuideBtn.setAttribute("aria-controls", "guidePanel");
+guidePanel.setAttribute("aria-label", "Game guide");
+
 
 // Error handling for canvas context
 if (!ctx) {
