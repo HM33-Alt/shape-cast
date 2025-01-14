@@ -183,12 +183,10 @@ function handleCanvasClick(event) {
     // Check for win condition after rendering
     if (GAME_STATE.currentScore === GAME_STATE.targetScore) {
         GAME_STATE.isPlaying = false;  // Stop the game
-        if (window.gameTimer) {
-            clearInterval(window.gameTimer);
-        }
-        const timeLeft = GAME_STATE.timeLeft;
-        endGame(`Perfect Score! You won with ${timeLeft} seconds left!`);
+        clearInterval(window.gameTimer);  // Stop the timer
+        showMessage("You have won! Hit Start Game to play again!");  // Show win message
     }
+
 }
 
 function createShape(x, y) {
@@ -213,35 +211,16 @@ function updateUI() {
     document.getElementById('timeDisplay').textContent = `Time: ${GAME_STATE.timeLeft}s`;
 }
 
-function showMessage(text) {
-    const messageElement = document.getElementById('message');
-    messageElement.textContent = text;
-    messageElement.style.opacity = '1';
+function showMessage(message) {
+    const messageBox = document.getElementById("message");
+    messageBox.textContent = message;
+    messageBox.style.opacity = 1;
+
     setTimeout(() => {
-        messageElement.style.opacity = '0';
-    }, 2000);
+        messageBox.style.opacity = 0;  // Hide the message after a delay
+    }, 3000);
 }
 
-function clearSpace() {
-    if (!GAME_STATE.isPlaying) {
-        showMessage("Start the game first!");
-        return;
-    }
-
-    // Clear all shapes
-    drawnShapes = [];
-
-    // Reset only the current score
-    GAME_STATE.currentScore = 0;
-
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Update UI
-    updateUI();
-
-    showMessage("Space cleared!");
-}
 
 // Event Listeners
 document.getElementById("startBtn").addEventListener("click", startGame);
