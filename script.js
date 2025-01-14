@@ -96,27 +96,32 @@ document.getElementById("clearBtn").addEventListener("click", clearSpace);
 
 // Game functions
 function startGame() {
-    // Initialize game state
+    // Reset the game state
     GAME_STATE.isPlaying = true;
     GAME_STATE.currentScore = 0;
     GAME_STATE.timeLeft = GAME_CONFIG.TIME_LIMIT;
     GAME_STATE.targetScore = generateTargetScore();
 
-    // Clear any existing shapes and canvas
+    // Clear any existing drawn shapes
     drawnShapes = [];
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Enable buttons
+    // Re-enable canvas interaction
+    document.getElementById("gameCanvas").style.pointerEvents = "auto";  // Re-enable mouse events
+
+    // Enable buttons (if previously disabled)
     document.getElementById("clearBtn").disabled = false;
 
-    // Start timer
+    // Start the timer
     startTimer();
 
-    // Update UI
+    // Update the UI
     updateUI();
 
+    // Show message that the game has started
     showMessage("Game started! Reach the target score!");
 }
+
 
 function generateTargetScore() {
     return Math.floor(Math.random() *
@@ -136,14 +141,28 @@ function startTimer() {
             GAME_STATE.timeLeft--;
             updateUI();
         } else {
-            clearInterval(window.gameTimer);
-            endGame('Time is up!');
+            clearInterval(window.gameTimer);  // Stop the timer
+            endGame('Time is up!');  // Explicitly call the end game function
         }
     }, 1000);
 }
 
+function endGame(message) {
+    GAME_STATE.isPlaying = false;  // Explicitly stop the game
+    clearInterval(window.gameTimer);  // Stop the timer
+
+    // Show the "Game Over" or other messages
+    showMessage(message);
+
+    // Disable canvas interaction
+    document.getElementById("gameCanvas").style.pointerEvents = "none";  // Disable mouse events on canvas
+}
+
 function handleCanvasClick(event) {
-    if (!GAME_STATE.isPlaying) return;
+    if (!GAME_STATE.isPlaying) {  // Check if the game is still active
+        showMessage("Game Over! Start a new game to play.");
+        return;  // Prevent shape placement when the game is not active
+    }
 
     const { offsetX: mouseX, offsetY: mouseY } = event;
     const newShape = createShape(mouseX, mouseY);
@@ -173,11 +192,8 @@ function handleCanvasClick(event) {
 
     // Check for win condition after rendering
     if (GAME_STATE.currentScore === GAME_STATE.targetScore) {
-        GAME_STATE.isPlaying = false;  // Stop the game
-        clearInterval(window.gameTimer);  // Stop the timer
-        showMessage("Score Reached! Hit Start Game To Play Again!");  // Show win message
+        endGame("Score Reached! Hit Start Game To Play Again!");  // End the game when score is reached
     }
-
 }
 
 function createShape(x, y) {
