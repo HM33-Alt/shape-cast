@@ -1,11 +1,11 @@
 # Shape-Cast
 
 ## Description
-This is my project submission for the AWS Game Builder Challenge (https://awsdevchallenge.devpost.com/).\
+This is my project submission for the AWS Game Builder Challenge (https://awsdevchallenge.devpost.com/). \
 To view my submission: https://main.d1tlgag3vgp7ls.amplifyapp.com/ (web application)
 
 ## Purpose For The Developer
-Provided an opportunity for me to explore and familiarize myself with AWS technologies and have fun making a game.\
+Provided an opportunity for me to explore and familiarize myself with AWS technologies and have fun making a game.
 
 ## Intended Purpose Of The Game
 Shape-Cast is an interactive browser-based game where players strategically select and place different shapes on a blank canvas to achieve the target score within a time limit.\
