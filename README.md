@@ -2,7 +2,7 @@
 
 ## Description
 This is my project submission for the AWS Game Builder Challenge (https://awsdevchallenge.devpost.com/).
-To view my submission: []
+To view my submission: https://main.d1tlgag3vgp7ls.amplifyapp.com/ (web application)
 
 ## Purpose Of The Game
 Shape-Cast is an interactive browser-based game where players strategically select and place different shapes on a blank canvas
@@ -25,6 +25,9 @@ Amazon Q Developer was instrumental in the development process:
 - Best Practices: Provided guidance on game implementation and structure
 - Abidance of Good SWE Principles: Ensured that poor code practices were avoided as much as possible (i.e. arrowhead, nested loops, poor code commit language)
 - Code Review: Utilized the inbuilt '/review' to identify and fix potential issues in the implementation
+
+### AWS Amplify Integration
+- Deployed as a web application using AWS Amplify 
 
 ## Features
 - Real-time score tracking and countdown
