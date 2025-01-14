@@ -110,15 +110,27 @@ toggleGuideBtn.onclick = function() {
 ````
 
 ## Game Rules (Also Available In-Game)
-1. Start the game by clicking the "Start Game" button
-2. You have 40 seconds to reach the target score
-3. Click shape buttons below the canvas and click on the canvas to place them
-4. Each shape has a different point value:
-    - Circle: 5 points
-    - Square: 10 points
-    - Triangle: 15 points
-    - Diamond: -1 point (strategic negative point element)
-5. Use the "Clear Space" button to reset the canvas
+1. Game Objective: Reach the target score within the time limit by strategically placing shapes.
+
+2. Shape Values:
+   Circle: 5 points
+   Square: 10 points
+   Triangle: 15 points
+   Diamond: -1 point
+
+3. Controls:
+   - Press 'Start Game' to begin a new game 
+   - Click any shape button to select it</li>
+   - Click on the canvas to place the selected shape</li>
+   - Once you have selected a shape, you do not need to click the same shape button again unless you would like to change the shape.</li>
+   - In other words, you can select a shape once and place it on the canvas as many times as you can and as fast as you can until you need to change the shape.</li>
+   - Use 'Clear Space' to remove all shapes</li>
+   - Press 'Start Game' to begin a new game or restart if its too hard</li>
+
+4. Tips
+   - Plan your shape placements carefully
+   - Watch the timer
+   - Use diamonds strategically to adjust your score</li>
 
 ## License
 MIT
