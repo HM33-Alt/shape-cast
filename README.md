@@ -29,7 +29,7 @@ Amazon Q Developer was instrumental in the development process:
 - Code Organization: Utilized the assistant to seek guidance on how to organize codebase (especially script.js)
 
 ### How I Used Other AWS Services
-- I used AWS Amplify to deploy the game as a web application: https://main.d1tlgag3vgp7ls.amplifyapp.com/ 
+- I used AWS Amplify to deploy the game as a web application 
 
 ## Features
 - Real-time score tracking and countdown
