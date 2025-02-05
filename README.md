@@ -2,7 +2,8 @@
 
 ## Description
 This is my project submission for the AWS Game Builder Challenge (https://awsdevchallenge.devpost.com/). \
-To view my submission: https://main.d1tlgag3vgp7ls.amplifyapp.com/ (web application)
+As the competition has ended, I have shut down the App Deployment. \
+If you would like to view my submission, please drop me a request on Linkedin.
 
 ## Purpose For The Developer
 Provided an opportunity for me to explore and familiarize myself with AWS technologies and have fun making a game.
